@@ -20,7 +20,8 @@ jobs:
           username: ${{secrets.SSH_USERNAME}}
           password: ${{secrets.SSH_KEY}}
           port: 22
-          script: cd ~/app/test-action
+          script: |
+            cd ~/app/test-action
             git pull origin master
             npm install
             pm2 restart test-action
