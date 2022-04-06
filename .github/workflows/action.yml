@@ -1,5 +1,5 @@
 # Konfigurasi Continuos Deployment
-name: CD Attendance API
+name: test
 
 on:
   push:
@@ -13,12 +13,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Deploy Attendance API with github action
+      - name: Deploy test API with github action
         uses: appleboy/ssh-action@master
         with:
           host: ${{secrets.SSH_HOST}}
           username: ${{secrets.SSH_USERNAME}}
-          password: ${{secrets.SSH_KEY}}
+          key: ${{secrets.SSH_KEY}}
           port: 22
           script: |
             cd ~/app/test-action
