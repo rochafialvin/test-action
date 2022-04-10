@@ -7,7 +7,7 @@ const port = 2999;
 app.use(cors());
 
 app.get("/", (req, res) => {
-  res.send("<h1>Hello emang ga bisa make ssh</h1>");
+  res.send("<h1>Hello from the other side</h1>");
 });
 
 app.get("/books", async (req, res) => {
