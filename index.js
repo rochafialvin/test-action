@@ -1,4 +1,6 @@
 const express = require("express");
+const fs = require("fs");
+const https = require("https");
 const app = express();
 const axios = require("axios");
 const cors = require("cors");
@@ -22,6 +24,14 @@ app.get("/books", async (req, res) => {
   }
 });
 
-app.listen(port, () => {
-  console.log(`Server running at ${port}`);
-});
+https
+  .createServer(
+    {
+      key: fs.readFileSync("server.key"),
+      cert: fs.readFileSync("server.cert"),
+    },
+    app
+  )
+  .listen(port, () => {
+    console.log(`Listening at ${port}`);
+  });
